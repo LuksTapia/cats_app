@@ -6,16 +6,16 @@ public class Cats {
 
     Dotenv dotenv = Dotenv.load();
 
-    int id;
+    String id;
     String url;
     String apikey = dotenv.get("API_KEY");
     String image;
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    private void setId(int id) {
+    private void setId(String id) {
         this.id = id;
     }
 
