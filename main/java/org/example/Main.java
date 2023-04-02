@@ -1,5 +1,6 @@
 package org.example;
 
+import org.example.model.Cats;
 import org.example.service.CatsService;
 
 import javax.swing.*;
@@ -13,43 +14,45 @@ public class Main {
         showMenu();
 
     }
-
     public static void showMenu() {
-
 
         int menuOption = -1;
 
-        String [] buttons = {
-                "1. See cats" ,"2. See favourites" ,"3. Log out"};
+        String[] buttons = {
+                "1. See cats", "2. See favourites", "3. Log out"};
 
-        do{
+        do {
 
             String option = (String) JOptionPane.showInputDialog(null, "Java Cats", "Main Menu", JOptionPane.INFORMATION_MESSAGE,
-                    null, buttons,buttons[0]);
+                    null, buttons, buttons[0]);
 
-            for(int i=0;i<buttons.length;i++){
-                if(option.equals(buttons[i])){
+            for (int i = 0; i < buttons.length; i++) {
+                if (option.equals(buttons[i])) {
                     menuOption = i;
                 }
             }
 
-            try{
+            try {
                 chosenOption(menuOption);
             } catch (IOException e) {
                 System.out.println(e.getMessage());
             }
 
 
-        } while(menuOption != 2);
+        } while (menuOption != 2);
     }
 
     private static void chosenOption(int option) throws IOException {
 
+        Cats c = new Cats();
         CatsService s = new CatsService();
 
         switch (option) {
             case 0:
                 s.showCats();
+                break;
+            case 1:
+                s.listFavourites(c.getApikey());
                 break;
             default:
                 break;

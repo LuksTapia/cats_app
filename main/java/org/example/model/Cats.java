@@ -4,12 +4,22 @@ import io.github.cdimascio.dotenv.Dotenv;
 
 public class Cats {
 
-    Dotenv dotenv = Dotenv.load();
+    private Dotenv dotenv = Dotenv.load();
+    private String id;
+    private String url;
+    private String apikey = dotenv.get("API_KEY");
+    private String image;
 
-    String id;
-    String url;
-    String apikey = dotenv.get("API_KEY");
-    String image;
+
+    public Cats() {
+    }
+
+    public Cats(String id, String url, String apikey, String image) {
+        setId(id);
+        setUrl(url);
+        setApikey(apikey);
+        setImage(image);
+    }
 
     public String getId() {
         return id;
